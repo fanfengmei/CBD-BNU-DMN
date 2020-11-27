@@ -1,7 +1,7 @@
 function [age_tValue1,age_pValue1,age_beta1,age_tValue2, age_pValue2,age_beta2] = mixed_model_LQ(prediction,Covariance_path)
 % =========================================================================
 % This function is used to examine linear and quardratic age effect on measures
-% Syntax: [age_tValue1,age_pValue1,age_beta1,age_tValue2, age_pValue2,age_beta2] = mixed_model_LQ(prediction,Covariance_path)
+% Syntax: [age_tValue1, age_pValue1, age_beta1, age_tValue2, age_pValue2, age_beta2] = mixed_model_LQ(prediction,Covariance_path)
 %
 % Input:
 %       prediction: Dependent Variable

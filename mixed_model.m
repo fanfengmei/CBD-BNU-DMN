@@ -1,7 +1,7 @@
 function [age_tValue,age_pValue,age_beta,model_type] = mixed_model(prediction,Covariance_path)
 % =========================================================================
 % This function is used to examine age effect on measures
-% Syntax: [age_tValue,age_pValue,age_beta,model_type] = mixed_model(prediction,Covariance_path)
+% Syntax: [age_tValue, age_pValue, age_beta, model_type] = mixed_model(prediction,Covariance_path)
 % Input:
 %       prediction: Dependent Variable
 %       Covariance_path: Covariance table path

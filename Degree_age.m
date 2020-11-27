@@ -4,15 +4,13 @@
 % =========================================================================
 clear all; clc;
 Covariance_path = pwd; %% work directory
-subjects = textread('sub_CBDPC.list' ,'%s');
-N_sub = size(subjects,1);
 nodes_name = textread('nodes_name.txt','%s');
 N_node = numel(nodes_name);
 load matrix_child_CBDPC.mat
 load info_child.mat
 r_thr = 0.2  % correlation threshold rth of 0.2 was used to remove the spurious correlations
 matrix_FC(find(matrix_FC<r_thr)) = 0;  %% if FC < 0, then put FC = 0 in matrix_FC
-for i_sub = 1:N_sub
+for i_sub = 1:size(matrix_FC,3)
     [averk degree(i_sub,:)] = gretna_node_degree_weight(matrix_FC(:,:,i_sub));
 end
 %%
