@@ -1,11 +1,11 @@
 % =========================================================================
-% This procedure is used to examine age effect on functional connectivity between 32 DMN nodes
-% Written by Fengmei Fan, NKLCNL, BNU, BeiJing, 2020/11/27, fanfengmei@live.com
+% This procedure is used to examine the age effects on the functional connectivity among 32 DMN nodes
+% Written by Fengmei Fan, SKLCNL, BNU, Beijing, 2020/11/27, fanfengmei@live.com
 % =========================================================================
 clear all
 load matrix_child_CBDPC.mat
 load info_child.mat
-Covariance_path = pwd; %% work directory
+Covariance_path = pwd; % working directory
 nodes_name = textread('nodes_name.txt','%s');
 N_node = numel(nodes_name);
 %% FDR
@@ -24,10 +24,11 @@ for i_node = 1:N_node
         end
     end
 end
-[pID1] = gretna_FDR(squareform(age_pp1),0.05)  %%linear FDR correction, pID1=0.0052
-[pID2] = gretna_FDR(squareform(age_pp2),0.05)  %% pID2=[];
-% Here,please check threshold for FDR correction. We get p value for FDR correction "pID1=0.0052, pID2 is empty",
-% which means there is only linear change but no significant quadratic change of functional connectivity
+%% Correction for multiple comparisions using the FDR method
+[pID1] = gretna_FDR(squareform(age_pp1),0.05)
+[pID2] = gretna_FDR(squareform(age_pp2),0.05)
+% Please check the output threshold for the FDR method. Here,we found "pID1=0.0052, pID2 is empty",
+% which means there is significant linear change but no significant quadratic change.
 FC_index = zeros(N_node, N_node);
 FC_index(find(age_tt1 < 0 & age_pp1 <= pID1 & age_pp1 ~= 0 & model_type==1)) = -1;
 FC_index(find(age_tt1 > 0 &  age_pp1 <= pID1 & age_pp1 ~= 0 & model_type==1)) = 1;

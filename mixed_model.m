@@ -1,19 +1,19 @@
 function [age_tValue,age_pValue,age_beta,model_type] = mixed_model(prediction,Covariance_path)
 % =========================================================================
-% This function is used to examine age effect on measures
+% This function is used to examine the age effects on the measures of interest
 % Syntax: [age_tValue, age_pValue, age_beta, model_type] = mixed_model(prediction,Covariance_path)
 % Input:
-%       prediction: Dependent Variable
-%       Covariance_path: Covariance table path
+%       prediction: Dependent variable in terms of column
+%       Covariance_path: Full path of the data containing the covariance infomation
 % Output:
 %       age_tValue: t value of age effect
 %       age_pValue: p value of age effect
 %       age_beta: beta value of age effect
-%       model_type: type of the most fitted model,
+%       model_type: type of the optimal model
 %                   1 represents linear model
 %                   2 represents quadratic model
 %
-% Written by Tianyuan Lei, NKLCNL, BNU, BeiJing, 2020/3/10, tianyuanlei@yeah.net
+% Written by Tianyuan Lei, SKLCNL, BNU, Beijing, 2020/3/10, tianyuanlei@yeah.net
 % =========================================================================
 addpath(Covariance_path);
 load('info_child.mat');
